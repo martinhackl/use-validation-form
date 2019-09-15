@@ -4,8 +4,12 @@ node_js:
   - 9
   - 8
 cache: npm
+branches:
+  only:
+    - master
 install:
   - npm install -g codecov
+  - npm ci
 script:
   - npm test
   - codecov
