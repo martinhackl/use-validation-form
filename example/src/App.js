@@ -13,7 +13,7 @@ function App() {
     mymultipleSelect: [],
     myradio: 'foo',
   };
-  const validators = { username: e => e.length < 3 && 'username wrong' };
+  const validators = { myinput: e => e.length < 3 && 'username wrong' };
 
   const { values, errors, onChange, onSubmit } = useValidationForm({
     defaultValues,
@@ -30,7 +30,6 @@ function App() {
             <input
               className="input"
               type="text"
-              placeholder="input"
               name="myinput"
               value={values.myinput}
               onChange={onChange}
@@ -93,65 +92,65 @@ function App() {
           `}
           value={values.myselect}
         />
-      </div>
-      <CodePreview
-        renderInput={() => (
-          <div className="select is-multiple">
-            <select
-              multiple
-              size="3"
-              name="mymultipleSelect"
-              value={values.mymultipleSelect}
-              onChange={onChange}
-            >
-              <option value="one">One</option>
-              <option value="two">Two</option>
-              <option value="three">Three</option>
-            </select>
-          </div>
-        )}
-        title="Multiple Select"
-        code={`
+        <CodePreview
+          renderInput={() => (
+            <div className="select is-multiple">
+              <select
+                multiple
+                size="3"
+                name="mymultipleSelect"
+                value={values.mymultipleSelect}
+                onChange={onChange}
+              >
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+              </select>
+            </div>
+          )}
+          title="Multiple Select"
+          code={`
 <select multiple size="3" name="mymultipleSelect" values={values.mymultipleSelect} onChange={onChange}>
   <option value="one">One</option>
   <option value="two">Two</option>
   <option value="three">Three</option>
 </select>
         `}
-        value={values.mymultipleSelect}
-      />
-      <CodePreview
-        renderInput={() => (
-          <div className="control">
-            <label className="radio">
-              <input
-                type="radio"
-                name="myradio"
-                checked={values.myradio === 'foo'}
-                value="foo"
-                onChange={onChange}
-              />
-              Foo
-            </label>
-            <label className="radio">
-              <input
-                type="radio"
-                name="myradio"
-                checked={values.myradio === 'bar'}
-                value="bar"
-                onChange={onChange}
-              />
-              Bar
-            </label>
-          </div>
-        )}
-        title="Radio"
-        code={`
+          value={values.mymultipleSelect}
+        />
+        <CodePreview
+          renderInput={() => (
+            <div className="control">
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="myradio"
+                  checked={values.myradio === 'foo'}
+                  value="foo"
+                  onChange={onChange}
+                />
+                Foo
+              </label>
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="myradio"
+                  checked={values.myradio === 'bar'}
+                  value="bar"
+                  onChange={onChange}
+                />
+                Bar
+              </label>
+            </div>
+          )}
+          title="Radio"
+          code={`
 <input type="radio" name="myradio" checked={values.myradio === 'foo'} value="foo" onChange={onChange} />
 <input type="radio" name="myradio" checked={values.myradio === 'bar'} value="bar" onChange={onChange} />
         `}
-        value={values.myradio}
-      />
+          value={values.myradio}
+        />
+      </div>
     </div>
   );
 }
