@@ -5,6 +5,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
+    "bulma": "^0.7.5",
+    "prismjs": "^1.17.1",
     "react": "file:../node_modules/react",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
