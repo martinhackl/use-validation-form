@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/use-validation-form/static/js/main.2c5e935c.chunk.js",
+    "main.js.map": "/use-validation-form/static/js/main.2c5e935c.chunk.js.map",
+    "runtime~main.js": "/use-validation-form/static/js/runtime~main.d5969d3f.js",
+    "runtime~main.js.map": "/use-validation-form/static/js/runtime~main.d5969d3f.js.map",
+    "static/css/2.11c28612.chunk.css": "/use-validation-form/static/css/2.11c28612.chunk.css",
+    "static/js/2.fe514e42.chunk.js": "/use-validation-form/static/js/2.fe514e42.chunk.js",
+    "static/js/2.fe514e42.chunk.js.map": "/use-validation-form/static/js/2.fe514e42.chunk.js.map",
+    "index.html": "/use-validation-form/index.html",
+    "precache-manifest.b86682f3fd191eab1a3db1889d844522.js": "/use-validation-form/precache-manifest.b86682f3fd191eab1a3db1889d844522.js",
+    "service-worker.js": "/use-validation-form/service-worker.js",
+    "static/css/2.11c28612.chunk.css.map": "/use-validation-form/static/css/2.11c28612.chunk.css.map",
+    "static/media/all.css": "/use-validation-form/static/media/fa-solid-900.d6d8d5da.woff2"
+  }
+}
