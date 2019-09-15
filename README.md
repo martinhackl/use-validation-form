@@ -4,6 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/use-validation-form.svg)](https://www.npmjs.com/package/use-validation-form)
 [![Build Status](https://travis-ci.org/martinhackl/use-validation-form.svg?branch=master)](https://travis-ci.org/martinhackl/use-validation-form)
+[![codecov](https://codecov.io/gh/martinhackl/use-validation-form/branch/master/graph/badge.svg)](https://codecov.io/gh/martinhackl/use-validation-form)
 
 ## Table of Contents
 
