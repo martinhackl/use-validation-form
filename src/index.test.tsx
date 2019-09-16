@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { render, fireEvent, wait } from '@testing-library/react';

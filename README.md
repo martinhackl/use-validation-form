@@ -14,6 +14,7 @@
   - [Supported Input Types](#supported-input-types)
 - [API](#api)
 - [Docs](#docs)
+- [Changelog](#changelog)
 - [LICENSE](#license)
 
 ## Install
@@ -197,6 +198,11 @@ interface Arguments {
 ## Docs
 
 [**Read The Docs**](https://martinhackl.github.io/use-validation-form/)
+
+## Changelog
+
+- **v1.0.0**: Initial version
+  - **v1.0.1**: Code cleanup
 
 ## License
 

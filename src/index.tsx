@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useMemo, useEffect, ChangeEvent, FormEvent } from 'react';
 
 type Validator = (value: any) => string | false;
@@ -6,7 +7,7 @@ export interface Validators {
   [key: string]: Validator;
 }
 
-export interface DefaultValues {
+export interface Values {
   [key: string]: any;
 }
 
@@ -15,16 +16,27 @@ interface Errors {
 }
 
 interface Arguments {
-  defaultValues: DefaultValues;
+  defaultValues: Values;
   validators?: Validators;
   callback?: () => void;
+}
+
+interface ReturnObject {
+  values: Values;
+  errors: Errors;
+  isValid: boolean;
+  isDirty: boolean;
+  isSubmitting: boolean;
+  validateAll: () => void;
+  onChange: (e: ChangeEvent<any>) => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 export function useValidationForm({
   defaultValues,
   validators,
   callback,
-}: Arguments) {
+}: Arguments): ReturnObject {
   const [values, setValues] = useState(defaultValues);
   const [errors, setErrors] = useState({} as Errors);
   const [isDirty, setIsDirty] = useState(false);
@@ -32,7 +44,7 @@ export function useValidationForm({
 
   const isValid = useMemo(() => Object.keys(errors).length === 0, [errors]);
 
-  const onChange = (e: ChangeEvent<any>) => {
+  const onChange = (e: ChangeEvent<any>): void => {
     e.persist();
     const {
       target: { type, name, value },
@@ -41,8 +53,9 @@ export function useValidationForm({
     if (type === 'checkbox') {
       setValues(v => ({ ...v, [name]: !v[name] }));
     } else if (e.target.localName === 'select' && e.target.multiple) {
-      console.log(e);
-      let cur = [...e.target.options].filter(o => o.selected).map(o => o.value);
+      const cur = [...e.target.options]
+        .filter(o => o.selected)
+        .map(o => o.value);
       setValues(v => ({ ...v, [name]: cur }));
     } else {
       setValues(v => ({ ...v, [name]: value }));
@@ -54,12 +67,13 @@ export function useValidationForm({
     if (errMsg) {
       setErrors(e => ({ ...e, [name]: errMsg }));
     } else {
-      const { [name]: e, ...other } = errors;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { [name]: _, ...other } = errors;
       setErrors(other);
     }
   };
 
-  const validateAll = () => {
+  const validateAll = (): void => {
     if (validators) {
       setErrors(
         Object.keys(validators).reduce((prev, next) => {
@@ -72,7 +86,7 @@ export function useValidationForm({
     }
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     validateAll();
     setIsSubmitting(true);
