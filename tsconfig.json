@@ -27,8 +27,8 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "isolatedModules": true
   },
   "include": [
     "src"

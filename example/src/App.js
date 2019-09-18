@@ -15,9 +15,11 @@ function App() {
   };
   const validators = { myinput: e => e.length < 3 && 'username wrong' };
 
-  const { values, errors, onChange, onSubmit } = useValidationForm({
+  const { values, errors, onChange } = useValidationForm({
     defaultValues,
     validators,
+    validateOnChange: true,
+    validateOnBlur: true,
     callback: () => alert('Submit Form!'),
   });
 
@@ -31,13 +33,15 @@ function App() {
               className="input"
               type="text"
               name="myinput"
-              value={values.myinput}
+              defaultValue={values.myinput}
               onChange={onChange}
+              onBlur={onChange}
             />
           )}
           title="Input"
           code={`<input type="text" name="myinput" value={values.myinput} onChange={onChange} />`}
           value={values.myinput}
+          error={errors.myinput}
         />
         <CodePreview
           renderInput={() => (

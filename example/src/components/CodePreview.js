@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function CodePreview({ renderInput, title, code, value }) {
+function CodePreview({ renderInput, title, code, value, error }) {
   const trimmed = code.trim();
 
   return (
@@ -19,6 +20,7 @@ function CodePreview({ renderInput, title, code, value }) {
         <div className="column is-8">
           <div className="box">
             <div className="notification">Value: {JSON.stringify(value)}</div>
+            <div className="notification">Error: {String(error)}</div>
             <figure className="highlight">
               <pre>
                 <code className="language-jsx">{trimmed}</code>
@@ -30,5 +32,17 @@ function CodePreview({ renderInput, title, code, value }) {
     </section>
   );
 }
+
+CodePreview.propTypes = {
+  renderInput: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  code: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.array,
+  ]),
+  error: PropTypes.string,
+};
 
 export default CodePreview;

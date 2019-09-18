@@ -18,6 +18,8 @@ interface Errors {
 interface Arguments {
   defaultValues: Values;
   validators?: Validators;
+  validateOnChange: boolean;
+  validateOnBlur: boolean;
   callback?: () => void;
 }
 
@@ -35,6 +37,8 @@ interface ReturnObject {
 export function useValidationForm({
   defaultValues,
   validators,
+  validateOnChange = true,
+  validateOnBlur = true,
   callback,
 }: Arguments): ReturnObject {
   const [values, setValues] = useState(defaultValues);
@@ -47,8 +51,12 @@ export function useValidationForm({
   const onChange = (e: ChangeEvent<any>): void => {
     e.persist();
     const {
+      type: eventType,
       target: { type, name, value },
     } = e;
+
+    if (eventType === 'change' && !validateOnChange) return;
+    if (eventType === 'blur' && !validateOnBlur) return;
 
     if (type === 'checkbox') {
       setValues(v => ({ ...v, [name]: !v[name] }));
@@ -85,6 +93,7 @@ export function useValidationForm({
       );
     }
   };
+  ``;
 
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -110,3 +119,12 @@ export function useValidationForm({
     onSubmit,
   };
 }
+
+/*
+
+...bind['username']
+{
+  username: { name: 'username', value: values['username'], onChange, }
+}
+
+*/
